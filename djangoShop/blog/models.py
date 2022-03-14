@@ -1,10 +1,9 @@
 from django.db import models
-
 from taggit.managers import TaggableManager
 
 # Create your models here.
 
-class Category(models.model):
+class Category(models.Model):
     name = models.CharField(max_length=60)
 
 class Blog(models.Model):
@@ -13,7 +12,7 @@ class Blog(models.Model):
     description = models.TextField()
     date = models.DateField(auto_now=False, auto_now_add=True)
     tags = TaggableManager()
-    categories = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category, related_name="category")
 
 class Comment(models.Model):
     post = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
