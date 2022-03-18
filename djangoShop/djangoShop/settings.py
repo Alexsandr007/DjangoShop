@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'taggit',
+
     'catalog.apps.CatalogConfig',
     'blog.apps.BlogConfig',
     'base.apps.BaseConfig',
@@ -130,3 +132,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # django-taggit
 TAGGIT_CASE_INSENSITIVE = True
+
+CART_SESSION_ID = 'cart'
