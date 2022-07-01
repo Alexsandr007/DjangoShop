@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'contact.apps.ContactConfig',
     'card.apps.CardConfig',
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +63,7 @@ ROOT_URLCONF = 'djangoShop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,11 +120,23 @@ USE_I18N = True
 
 USE_TZ = True
 
+# настройка email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'alexandrzambzhitskiy@gmail.com'
+EMAIL_HOST_PASSWORD = 'vikusik17'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+SERVER_EMAIL = DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# настройка статики
+STATIC_URL = '/static/'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [STATIC_DIR]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -133,4 +146,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # django-taggit
 TAGGIT_CASE_INSENSITIVE = True
 
-CART_SESSION_ID = 'cart'
+# ключ сессии
+CARD_SESSION_ID = 'card'
+
+# настройка медиа
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

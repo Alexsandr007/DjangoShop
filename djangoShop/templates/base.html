@@ -1,0 +1,669 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns:card="http://www.w3.org/1999/xhtml">
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.png' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/themify/themify-icons.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/elegant-font/html-css/style.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/slick/slick.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/lightbox2/css/lightbox.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/noui/nouislider.min.css' %}">
+</head>
+<!-- Header -->
+	<header class="header1">
+		<!-- Header desktop -->
+		<div class="container-menu-header">
+			<div class="topbar">
+				<div class="topbar-social">
+					<a href="#" class="topbar-social-item fa fa-facebook"></a>
+					<a href="#" class="topbar-social-item fa fa-instagram"></a>
+					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+					<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+				</div>
+
+				<span class="topbar-child1">
+					Free shipping for standard order over $100
+				</span>
+
+				<div class="topbar-child2">
+					<span class="topbar-email">
+						fashe@example.com
+					</span>
+
+					<div class="topbar-language rs1-select2">
+						<select class="selection-1" name="time">
+							<option>USD</option>
+							<option>EUR</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrap_header">
+				<!-- Logo -->
+				<a href="{% url 'base:index' %}" class="logo">
+					<img src="{% static 'images/icons/logo.png' %}" alt="IMG-LOGO">
+				</a>
+
+				<!-- Menu -->
+				<div class="wrap_menu">
+					<nav class="menu">
+						<ul class="main_menu">
+							<li>
+								<a href="{% url 'base:index' %}">Home</a>
+							</li>
+
+							<li>
+								<a href="{% url 'catalog:product_catalog' %}">Shop</a>
+							</li>
+
+							<li>
+								<a href="{% url 'card:card_detail' %}">Card</a>
+							</li>
+
+							<li>
+								<a href="{% url 'blog:blog_catalog' %}">Blog</a>
+							</li>
+
+							<li>
+								<a href="{% url 'base:about' %}">About</a>
+							</li>
+
+							<li>
+								<a href="{% url 'contact:contact_page' %}">Contact</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<!-- Header Icon -->
+				<div class="header-icons">
+					<a href="#" class="header-wrapicon1 dis-block">
+						<img src="{% static 'images/icons/icon-header-01.png' %}" class="header-icon1" alt="ICON">
+					</a>
+
+					<span class="linedivide1"></span>
+
+					<div class="header-wrapicon2">
+						<img src="{% static 'images/icons/icon-header-02.png' %}"
+                             class="header-icon1 js-show-header-dropdown" alt="ICON" onclick="bag_content()">
+						<span class="header-icons-noti" id="count">0</span>
+
+						<!-- Header cart noti -->
+						<div class="header-cart header-dropdown">
+							<ul class="header-cart-wrapitem" id="bag">
+                                <p>Your basket is empty</p>
+							</ul>
+
+							<div class="header-cart-total" id="get__total">
+								Total: $0
+							</div>
+
+							<div class="header-cart-buttons">
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="{% url 'card:card_detail' %}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										View Cart
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Mobile -->
+		<div class="wrap_header_mobile">
+			<!-- Logo moblie -->
+			<a href="index.html" class="logo-mobile">
+				<img src="{% static 'images/icons/logo.png' %}" alt="IMG-LOGO">
+			</a>
+
+			<!-- Button show menu -->
+			<div class="btn-show-menu">
+				<!-- Header Icon mobile -->
+				<div class="header-icons-mobile">
+					<a href="#" class="header-wrapicon1 dis-block">
+						<img src="{% static 'images/icons/icon-header-01.png' %}" class="header-icon1" alt="ICON">
+					</a>
+
+					<span class="linedivide2"></span>
+
+					<div class="header-wrapicon2" >
+						<img src="{% static 'images/icons/icon-header-02.png' %}"
+                             class="header-icon1 js-show-header-dropdown" alt="ICON"  onclick="bag_content()">
+						<span class="header-icons-noti" id="count__mobile">0</span>
+
+						<!-- Header cart noti -->
+						<div class="header-cart header-dropdown">
+							<ul class="header-cart-wrapitem" id="bag__mobile">
+								<p>Your basket is empty</p>
+							</ul>
+
+							<div class="header-cart-total" id="get__total__mobile">
+								Total: $0
+							</div>
+
+							<div class="header-cart-buttons">
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										View Cart
+									</a>
+								</div>
+
+								<div class="header-cart-wrapbtn">
+									<!-- Button -->
+									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+										Check Out
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Menu Mobile -->
+		<div class="wrap-side-menu" >
+			<nav class="side-menu">
+				<ul class="main-menu">
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<span class="topbar-child1">
+							Free shipping for standard order over $100
+						</span>
+					</li>
+
+					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+						<div class="topbar-child2-mobile">
+							<span class="topbar-email">
+								fashe@example.com
+							</span>
+
+							<div class="topbar-language rs1-select2">
+								<select class="selection-1" name="time">
+									<option>USD</option>
+									<option>EUR</option>
+								</select>
+							</div>
+						</div>
+					</li>
+
+					<li class="item-topbar-mobile p-l-10">
+						<div class="topbar-social-mobile">
+							<a href="#" class="topbar-social-item fa fa-facebook"></a>
+							<a href="#" class="topbar-social-item fa fa-instagram"></a>
+							<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+							<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+							<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
+						</div>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="product.html">Shop</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="product.html">Sale</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="cart.html">Card</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="blog.html">Blog</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="about.html">About</a>
+					</li>
+
+					<li class="item-menu-mobile">
+						<a href="contact.html">Contact</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+<body class="animsition">{% block body %}{% endblock %}</body>
+
+<!-- Footer -->
+	<footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
+		<div class="flex-w p-b-90">
+			<div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
+				<h4 class="s-text12 p-b-30">
+					GET IN TOUCH
+				</h4>
+
+				<div>
+					<p class="s-text7 w-size27">
+						Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
+					</p>
+
+					<div class="flex-m p-t-30">
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
+						<a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Categories
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Men
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Women
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Dresses
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Sunglasses
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Links
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Search
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							About Us
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Contact Us
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Returns
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
+				<h4 class="s-text12 p-b-30">
+					Help
+				</h4>
+
+				<ul>
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Track Order
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Returns
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							Shipping
+						</a>
+					</li>
+
+					<li class="p-b-9">
+						<a href="#" class="s-text7">
+							FAQs
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
+				<h4 class="s-text12 p-b-30">
+					Newsletter
+				</h4>
+
+				<form>
+					<div class="effect1 w-size9">
+						<input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
+						<span class="effect1-line"></span>
+					</div>
+
+					<div class="w-size2 p-t-20">
+						<!-- Button -->
+						<button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+							Subscribe
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+		<div class="t-center p-l-15 p-r-15">
+			<a href="#">
+				<img class="h-size2" src="{% static 'images/icons/paypal.png' %}" alt="IMG-PAYPAL">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="{% static 'images/icons/visa.png' %}" alt="IMG-VISA">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="{% static 'images/icons/mastercard.png' %}" alt="IMG-MASTERCARD">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="{% static 'images/icons/express.png' %}" alt="IMG-EXPRESS">
+			</a>
+
+			<a href="#">
+				<img class="h-size2" src="{% static 'images/icons/discover.png' %}" alt="IMG-DISCOVER">
+			</a>
+
+			<div class="t-center s-text8 p-t-20">
+				Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+			</div>
+		</div>
+	</footer>
+
+
+	<!-- Back to top -->
+	<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+	</div>
+
+	<!-- Container Selection -->
+	<div id="dropDownSelect1"></div>
+	<div id="dropDownSelect2"></div>
+
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script type="text/javascript" src="{% static 'vendor/bootstrap/js/popper.js.map' %}"></script>
+	<script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script type="text/javascript" src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+{#    <script src="{% static 'js/jquery.cookie.min.js' %}"></script>#}
+    <script type="text/javascript">
+    $('.selection-1').select2({
+        minimumResultsForSearch: Infinity
+    });
+
+    function bag_content(){
+        $.ajax({
+            url: "{% url 'api:bag' %}",
+            method: "GET",
+        }).done(function (data) {
+
+            const tuple_bags = ['bag', 'bag__mobile'];
+            tuple_bags.forEach(function(item_bag, i, tuple) {
+                $(`#${item_bag}`).empty();
+            });
+            let keys = Object.keys(data);
+            if (keys.length > 1) {
+                for (step = 0; step < keys.length-1; step++) {
+                let bag_html = `<li class="header-cart-item">
+                                    <div class="header-cart-item-img" onclick="delete_prod(${keys[step]})">
+                                        <img src="${data[keys[step]]['product_img']}" alt="IMG" >
+                                    </div>
+
+                                    <div class="header-cart-item-txt">
+                                        <a href="/catalog/product_detail/${keys[step]}" class="header-cart-item-name">
+                                            ${data[keys[step]]['product_title']}
+                                        </a>
+
+                                        <span class="header-cart-item-info">
+                                            ${data[keys[step]]['product_quantity']} x $${data[keys[step]]['product_price']}
+                                        </span>
+                                    </div>
+                                </li>`
+                const total_sum = ['get__total', 'get__total__mobile'];
+
+                total_sum.forEach(function(item_sum, i, tuple) {
+                    $(`#${item_sum}`).empty();
+                    $(`#${item_sum}`).text(`Total: $${data['get_total_price'] || 0}`);
+                });
+                tuple_bags.forEach(function(item_bag, i, tuple) {
+                    $(`#${item_bag}`).append(bag_html);
+                });
+
+            }
+            } else {
+                 const total_sum = ['get__total', 'get__total__mobile'];
+                console.log('ers0');
+                total_sum.forEach(function(item_sum, i, tuple) {
+
+                    $(`#${item_sum}`).empty();
+                    $(`#${item_sum}`).text(`Total: $0`);
+                });
+            }
+        });
+    }
+    function delete_prod(id) {
+        {#let csrftoken = Cookies.get('csrftoken');#}
+        let csrfmiddlewaretoken = $('[name="csrfmiddlewaretoken"]').val();
+        $.ajax({
+            url: `/card/remove/${id}/`,
+            method: "POST",
+            data: {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                product_id: id,
+            },
+        }).done(function (data) {
+            if (data.error) {
+                $('#error__quantity').html(data.error);
+            } else {
+                bag();
+                if(window.location.pathname == '/card/'){
+                    card_content(data['id']);
+                    bag_content();
+                }
+                else{
+                    bag_content();
+                }
+
+            }
+        });
+    }
+    function bag(){
+        $.ajax({
+        url: "{% url 'api:bag' %}",
+        method: "GET",
+    }).done(function (data) {
+        let count = Object.keys(data);
+        $('#count').html(count.length-1)
+        $('#count__mobile').html(count.length-1)
+    });
+    }
+    window.onload = bag();
+
+    function addProduct(id,quantity=1){
+
+        let csrfmiddlewaretoken = $('[name="csrfmiddlewaretoken"]').val();
+        $.ajax({
+            url: `/card/add/${id}/`,
+            method: "POST",
+            data: {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                update: null,
+                quantity: quantity,
+                product_id: id,
+            },
+        }).done(function (data) {
+            if (data.error) {
+                $('#error__quantity').html(data.error);
+            } else {
+                $('#error__quantity').empty();
+                bag();
+                $('.block2-btn-addcart').each(function () {
+                    var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+                    $(this).on('click', function () {
+                        swal(nameProduct, "is added to cart !", "success");
+                    });
+                });
+            }
+        });
+    }
+    function quantity(){
+        let quantity = $('#quantity_num').val();
+        return quantity
+    }
+
+    function update_quantity(id,quantity) {
+        let update = true;
+        let csrfmiddlewaretoken = $('[name="csrfmiddlewaretoken"]').val();
+        $.ajax({
+            url: `/card/add/${id}/`,
+            method: "POST",
+            data: {
+                csrfmiddlewaretoken: csrfmiddlewaretoken,
+                update: update,
+                quantity: quantity,
+                product_id: id,
+            },
+        }).done(function (data) {
+            if (data.error) {
+                $(`#error__quantity${id}`).html(data.error);
+            } else {
+                $(`#error__quantity${id}`).empty();
+                bag();
+                card_content();
+            }
+        });
+    };
+    function card_content(id=null){
+        $.ajax({
+            url: "{% url 'api:card_content' %}",
+            method: "GET",
+        }).done(function (data) {
+            console.log(data)
+            let keys = Object.keys(data);
+            if(id != null){
+                $(`#table_columns${id}`).empty();
+            }
+            if (keys.length > 1) {
+                for (step = 0; step < keys.length-1; step++) {
+                    $(`#table_columns${keys[step]}`).empty();
+                    let card_html = `
+                    <td class="column-1">
+                        <div class="cart-img-product b-rad-4 o-f-hidden" onclick="delete_prod(${keys[step]})">
+                            <img src="${data[keys[step]]['product_img']}" alt="IMG-PRODUCT">
+                        </div>
+                    </td>
+                    <td class="column-2"> ${data[keys[step]]['product_title']}</td>
+                    <td class="column-3">$ ${data[keys[step]]['product_price']}</td>
+                    <td class="column-4" >
+                        <div class="flex-w bo5 of-hidden w-size17">
+                            <button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2" onclick="update_quantity( ${keys[step]}, ${data[keys[step]]['product_quantity']-1})">
+                                <i class="fs-12 fa fa-minus" aria-hidden="true" ></i>
+                            </button>
+
+                            <input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="${data[keys[step]]['product_quantity']}">
+
+                            <button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2"onclick="update_quantity(${keys[step]}, ${data[keys[step]]['product_quantity']+1})">
+                                <i class="fs-12 fa fa-plus" aria-hidden="true" ></i>
+                            </button>
+                        </div>
+                        <p id="error__quantity${keys[step]}" style="font-size:10px;"></p>
+                    </td>
+                    <td class="column-5">$${data[keys[step]]['product_total_price']}</td>
+                    <td class="column-6">
+                        <div class="size10 trans-0-4 m-t-10 m-b-10">
+                            {% csrf_token %}
+                            <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" style="width: 160px;"
+                                    onclick="delete_prod(${keys[step]})">
+                                Delete
+                            </button>
+                        </div>
+                    </td>`
+                    $(`#table_columns${keys[step]}`).append(card_html);
+                    $('#get_total_price').html(`$${data['get_total_price']}`)
+                }
+            }
+            else{
+                $('#get_total_price').html(`$0`)
+            }
+        });
+    }
+
+
+
+
+</script>
+{% block js %}{% endblock %}
+
+</html>
